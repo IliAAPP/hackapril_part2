@@ -34,6 +34,13 @@ const ProgressBar = ({ level, current, goal }) => {
           </View>
           <Image source={require('../assets/qrcode.png')} style={{ width: 110, height: 110 }} />
         </View>
+
+        <TouchableHighlight underlayColor='transparent' onPress={() => navigation.navigate('HistoryBonuses')}>
+          <View style={{flexDirection: 'row', padding: 10, backgroundColor: '#ADD8E6', marginTop: 10, width: '80%', justifyContent: 'center', marginLeft: 40, borderRadius: 10 }}>
+              <Text style={{fontSize: 15, fontWeight: '600', marginRight:10}}>Посмотреть историю зачислений</Text>
+              <Icon name='coins' color='gold' style={{ width: 20, height: 20, marginTop: 6, fontWeight: '900' }} />
+          </View>
+        </TouchableHighlight>
   
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 20 }}>
           <View style={styles.rectangle}>

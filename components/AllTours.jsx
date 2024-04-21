@@ -1,15 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity, TouchableHighlight } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
 import React, { useState } from 'react'; // Импортируем React и useState
 import { ScrollView } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
 export default function AllTours() {
   const [showResult, setShowResult] = useState(false); // Добавляем состояние showResult
 
   const handlePress = () => {
     setShowResult(!showResult); // Показываем результат при нажатии
+  };
+
+  const navigation = useNavigation();
+
+  const handleImagePress = () => {
+    navigation.navigate('LevelUpLocked');
   };
 
   return (
@@ -39,13 +46,26 @@ export default function AllTours() {
                     <Image source={require('../assets/hot1.png')} style={{ width: 150 , height: 145, margin: 5 }} />
                     <Image source={require('../assets/hot2.png')} style={{ width: 150, height: 145, margin: 5 }} />
                 
-                      
-                      <Image source={require('../assets/hot9.png')} style={{ width: 160, height: 145, margin: 5, borderRadius: 10, borderWidth: 1 }} />
-                      <Image source={require('../assets/hot9.png')} style={{ width: 160, height: 145, margin: 5 , borderRadius: 10, borderWidth: 1 }} />
-                      <Image source={require('../assets/hot9.png')} style={{ width: 160, height: 145, margin: 5 , borderRadius: 10, borderWidth: 1 }} />
-                      <Image source={require('../assets/hot9.png')} style={{ width: 160, height: 145, margin: 5, borderRadius: 10, borderWidth: 1  }} />
-                      <Image source={require('../assets/hot9.png')} style={{ width: 160, height: 145, margin: 5 , borderRadius: 10, borderWidth: 1 }} />
-                      <Image source={require('../assets/hot9.png')} style={{ width: 160, height: 145, margin: 5 , borderRadius: 10, borderWidth: 1 }} />
+                      <TouchableHighlight underlayColor='transparent' onPress={() => handleImagePress('LevelUpLocked')}>
+                        <Image source={require('../assets/hot9.png')} style={{ width: 160, height: 145, margin: 5, borderRadius: 10, borderWidth: 1 }} />
+                      </TouchableHighlight>
+                      <TouchableHighlight underlayColor='transparent' onPress={() => handleImagePress('LevelUpLocked')}>
+                        <Image source={require('../assets/hot9.png')} style={{ width: 160, height: 145, margin: 5, borderRadius: 10, borderWidth: 1 }} />
+                      </TouchableHighlight>
+                      <TouchableHighlight underlayColor='transparent' onPress={() => handleImagePress('LevelUpLocked')}>
+                        <Image source={require('../assets/hot9.png')} style={{ width: 160, height: 145, margin: 5, borderRadius: 10, borderWidth: 1 }} />
+                      </TouchableHighlight>
+                      <TouchableHighlight underlayColor='transparent' onPress={() => handleImagePress('LevelUpLocked')}>
+                        <Image source={require('../assets/hot9.png')} style={{ width: 160, height: 145, margin: 5, borderRadius: 10, borderWidth: 1 }} />
+                      </TouchableHighlight>
+                      <TouchableHighlight underlayColor='transparent' onPress={() => handleImagePress('LevelUpLocked')}>
+                        <Image source={require('../assets/hot9.png')} style={{ width: 160, height: 145, margin: 5, borderRadius: 10, borderWidth: 1 }} />
+                      </TouchableHighlight>
+                      <TouchableHighlight underlayColor='transparent' onPress={() => handleImagePress('LevelUpLocked')}>
+                        <Image source={require('../assets/hot9.png')} style={{ width: 160, height: 145, margin: 5, borderRadius: 10, borderWidth: 1 }} />
+                      </TouchableHighlight>
+
+
                     
                 </View>
 

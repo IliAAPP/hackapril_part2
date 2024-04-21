@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TextInput, StyleSheet, Text, Image, TouchableHighlight, ScrollView, SafeAreaView } from 'react-native';
+import { View, TextInput, StyleSheet, Text, Image, TouchableHighlight, ScrollView, SafeAreaView, ImageBackground } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import FooterComponent from './Footer';
 import { Linking } from 'react-native';
@@ -11,7 +11,8 @@ export default function Main() {
   const navigation = useNavigation();
   return (
     <ScrollView>
-      <View style={{backgroundColor: '#DCDCDC'}}>
+      <ImageBackground source={require('../assets/green_background.jpg')} style={[styles.background, { resizeMode: 'cover' }]} >
+      <View>
           <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', marginTop: 5}}>
               <TextInput placeholder="Поиск..." style={{ height: 50, width: 300}} />
 
@@ -20,19 +21,19 @@ export default function Main() {
               </TouchableHighlight>
           </View>
 
-          <View style={{paddingVertical: 5, paddingHorizontal: 15, backgroundColor: 'white', marginTop: 20, borderWidth: 2, borderRadius: 9, marginLeft: 30, width: '80%', flexDirection: 'row', margin: 15 }}>
+          <View style={{paddingVertical: 5, paddingHorizontal: 15, backgroundColor: 'white', marginTop: 20, borderWidth: 1, borderRadius: 9, marginLeft: 30, width: '80%', flexDirection: 'row', margin: 15 }}>
               <Image
               source={require('../assets/sun_cloud.jpg')}
               style={{ width: 90, height: 80, resizeMode: 'contain' }}
               />
-              <View>
+              <View style={{marginLeft: 10}}>
                   <Text style={styles.location}>Сегодня</Text>
                   <Text style={styles.temperature}>16°C</Text>
                   <Text style={styles.description}>Ощущается как +13°C</Text>
               </View>
           </View>
 
-          <TouchableHighlight underlayColor="transparent" onPress={() => Linking.openURL('https://t.me/Testik2101_bot')}>
+          <TouchableHighlight underlayColor="transparent" onPress={() => Linking.openURL('https://t.me/Hackatonbot_bot')}>
             <Image source={require('../assets/touch_but.png')} style={{width: 300, height: 70, marginTop: 20, marginLeft: 45, borderRadius: 10}} />
           </TouchableHighlight>
 
@@ -61,9 +62,9 @@ export default function Main() {
               <Image source={require('../assets/place2.png')} style={{ width: 200, height: 200, marginTop: 20, marginBottom: 15, borderRadius: 10}} />
               
           </View>
-          <View>
+          <TouchableHighlight underlayColor="transparent" onPress={() => navigation.navigate('Arenda')}>
             <Image source={require('../assets/arenda.png')} style={{ width: '80%', height: 200, marginBottom: 15, borderRadius: 10, marginLeft: 30 }} />
-          </View>
+          </TouchableHighlight>
 
           
             <View>
@@ -95,6 +96,7 @@ export default function Main() {
           
 
       </View>
+      </ImageBackground>
       </ScrollView>
   );
 }

@@ -1,5 +1,6 @@
 import telebot, requests, json
-bot = telebot.TeleBot('7100573123:AAFJAnV8UXmdTWHN_27vhElCYksRSOlJWn8')
+#Старый API 7100573123:AAFJAnV8UXmdTWHN_27vhElCYksRSOlJWn8
+bot = telebot.TeleBot('7077255177:AAGl1-6qDV6JaoGFYk7RfITAjyFc5B8pAo8')
 ans = [[1, 8, 101, 'По Бугазской косе '], [1, 9, 11, 'От Ласточкиных гнезд до Варваровской Щели'],
        [1, 9, 111, 'От 800 ступеней до Варваровской щели'], [1, 10, 100, 'От Сукко до Большого Утриша '],
        [1, 10, 100, 'От Варваровской щели до Сукко'], [2, 12, 101, 'Санаторий Малая Бухта '],
@@ -53,8 +54,9 @@ ques = ["Вы предпочитаете пешеходные маршруты?"
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    bot.send_message(message.chat.id, 'Приветствую! Ответьте на вопросы с "да" или "нет" после этого сообщения.')
+    bot.send_message(message.chat.id, 'Приветствую! Ответьте на вопросы в формате «да» или «нет», чтобы подобрать подходящее для Вас мероприятие.')
     handle_first_question(message)
+
 
 cnt = 1
 k = -1
@@ -66,8 +68,12 @@ def handle_first_question(message):
 @bot.message_handler(func=lambda message: True)
 def handle_first_response(response):
     if (response.text.lower())!='да' and (response.text.lower())!='нет':
-        bot.send_message(response.chat.id, 'Неверно введён ответ')
-        handle_first_question(response)
+        if response.text.lower()=='ещё':
+            bot.send_message(response.chat.id, 'Инициализация нового диалога')
+            handle_first_question(response)
+        else:
+            bot.send_message(response.chat.id, 'Неверно введён ответ')
+            handle_first_question(response)
     else:
         global cnt
         global cnt1
@@ -157,7 +163,12 @@ def handle_third_response(response):
             handle_third_question(response)
 
 def exit_bot(message):
-    bot.send_message(message.chat.id, 'здесь будет ссылка')
+    global cnt
+    global k
+    bot.send_message(message.chat.id, 'https://play.google.com/store/apps/details?id=ru.anapa.app')
+    bot.send_message(message.chat.id, 'Для выбора нового мероприятия введите в чат «ещё»')
+    cnt = 1
+    k = -1
     return
 
 bot.polling()
